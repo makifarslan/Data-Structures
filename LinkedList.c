@@ -14,9 +14,11 @@ struct student{
 typedef struct student Student;
 void printLinkedList(Student* headOfList);
 int checkForEmptyList(Student* headOfList);
+int getNumberOfStudents(Student* headOfList);
 int findStudent(Student* headOfList, int studentNumber);
 void insertList(Student** headOfList, int studentNumber, char* studentName);
 void deleteList(Student** headOfList, int studentNumber);
+
 
 int main(void){
     Student* headOfStudentList = NULL;
@@ -59,6 +61,21 @@ int checkForEmptyList(Student* headOfList){
     }
     else{
         return 1;
+    }
+}
+
+int getNumberOfStudents(Student* headOfList){
+    if(checkForEmptyList(headOfList) == 1){
+        Student* currentStudent = headOfList;
+        int counter = 0;
+        while(currentStudent != NULL){
+            currentStudent = currentStudent->nextStudent;
+            counter++;
+        }
+        return counter;
+    }
+    else{
+        return 0;
     }
 }
 
